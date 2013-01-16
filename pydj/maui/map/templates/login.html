@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{%url map.views.login%}" method="post">
+{% csrf_token %}
+<div align="center"> 
+<p></p> 
+<br> 
+<table border="0" cellpadding="2" cellspacing="2"> 
+  <tbody> 
+    <tr> 
+      <td valign="top">Username: <br> 
+      </td> 
+      
+        <td valign="top">{{form.username}}
+      
+      </td> 
+    </tr> 
+    <tr> 
+      <td valign="top">Password:<br> 
+      </td> 
+      
+        <td valign="top">{{form.password}}
+      
+      </td> 
+    </tr> 
+    <tr> 
+      <td valign="top">Host:<br> 
+      </td> 
+      
+        <td valign="top">{{form.host}}
+      
+      </td> 
+    </tr> 
+    
+    <tr> 
+      <td valign="top"><br> 
+      </td> 
+      <td valign="top"> 
+        <br><input value="Login" name="cmdSubmit" type="submit">&nbsp;<input value="Clear" name="cmdClear" type="reset"><br> 
+      </td> 
+    </tr> 
+  </tbody> 
+</table> 
+
+
+</form>
+
+
+{% endblock %}

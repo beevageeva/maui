@@ -1,0 +1,434 @@
+
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 40px 0px;
+	padding: 0;
+	background: #FFFFFF;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	color: #5E5A3F;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	color: #F0E9E9;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #84B700;
+}
+
+a:hover {
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+}
+
+/* Header */
+
+#header {
+	overflow: hidden;
+	width: 1000px;
+	height: 340px;
+	margin: 0 auto;
+}
+
+#gallery {
+	float: right;
+	width: 692px;
+	height: 340px;
+}
+
+/* Logo */
+
+#logo {
+	width: 1000px;
+	height: 110px;
+	margin: 0px auto;
+	padding: 0;
+	color: #79350A;
+	background: url(images/img01.jpg) no-repeat left top;
+}
+
+#logo h1, #logo p {
+	margin: 0;
+	padding: 0;
+	letter-spacing: -2px;
+	text-transform: lowercase;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#logo h1 {
+	margin: 0px 0px -10px 0px;
+	padding: 10px 0px 0px 40px;
+	font-size: 50px;
+	color: #4D8D99;
+}
+
+#logo h1 a {
+	color: #79350A;
+}
+
+#logo p {
+	margin: 0px;
+	padding: 0px 0px 0px 40px;
+	font-size: 26px;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: #34312C;
+}
+
+/* Search */
+
+#search {
+	height: 50px;
+	padding: 0px 0px 0px 0px;
+}
+
+#search form {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search-text {
+	width: 220px;
+	padding: 5px 5px 5px 10px;
+	border: none;
+	background: none;
+	text-transform: lowercase;
+	font: normal 14px Tahoma, Geneva, sans-serif;
+	color: #184203;
+}
+
+#search-submit {
+	width: 70px;
+	height: 22px;
+	border: none;
+	border: none;
+	background: none;
+	text-indent: -99999px;
+	color: #34312C;
+}
+
+/* Menu */
+
+#menu {
+	float: left;
+	width: 228px;
+	height: 340px;
+	margin: 0px;
+	padding: 0px 40px 0px 40px;
+	background: url(images/img02.jpg) no-repeat left top;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 50px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	padding: 15px 0px;
+	background: url(images/img10.jpg) repeat-x left bottom;
+}
+
+#menu a {
+	display: block;
+	margin: 0px;
+	padding: 0px 0px 0px 30px;
+	background: url(images/img09.jpg) no-repeat left 2px;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #BD778E;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	text-decoration: none;
+}
+
+#menu .current_page_item a {
+}
+
+/* Page */
+
+#page {
+	width: 1000px;
+	margin: 0px auto;
+	background: url(images/img04.jpg) repeat-y left top;
+}
+
+#page-bgtop {
+	overflow: hidden;
+	width: 920px;
+	padding: 20px 40px 30px 40px;
+	background: url(images/img12.jpg) no-repeat left top;
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 620px;
+}
+
+.post {
+	margin-bottom: 40px;
+}
+
+.post .title {
+	padding: 0px 0px 10px 0px;
+	text-transform: lowercase;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	letter-spacing: -1px;
+}
+
+.post .title a {
+	border: none;
+	color: #625E48;
+}
+
+.post .meta {
+	overflow: hidden;
+	background: #EDE8CA;
+	margin-bottom: 30px;
+	padding: 5px 10px 5px 10px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.post .meta .date {
+	float: left;
+}
+
+.post .meta .posted {
+	float: right;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	padding: 0px 0px 20px 0px;
+	border-bottom: 1px dashed #DCD4A7;
+	text-align: justify;
+}
+
+.links {
+	padding-top: 20px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 240px;
+	margin: 0px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar li ul {
+	margin: 0px 0px 0px 20px;
+	padding-bottom: 30px;
+}
+
+#sidebar li li {
+	line-height: 35px;
+	border-bottom: 1px dashed #C7C392;
+	border-left: none;
+}
+
+#sidebar li li span {
+	display: block;
+	margin-top: -20px;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#sidebar li li a {
+	padding-left: 20px;
+	background: url(images/img11.jpg) no-repeat left 6px;
+	color: #3E3B36;
+}
+
+#sidebar li li a:hover {
+	color: #84B700;
+}
+
+#sidebar h2 {
+	height: 38px;
+	letter-spacing: -.5px;
+	font-size: 1.8em;
+	color: #625E48;
+}
+
+#sidebar p {
+	margin: 0 0px;
+	padding: 0px 20px 20px 20px;
+}
+
+#sidebar a {
+	border: none;
+}
+
+#sidebar a:hover {
+}
+
+/* Calendar */
+
+#calendar {
+}
+
+#calendar_wrap {
+	padding: 20px;
+}
+
+#calendar table {
+	width: 100%;
+}
+
+#calendar tbody td {
+	text-align: center;
+}
+
+#calendar #next {
+	text-align: right;
+}
+
+/* Footer */
+
+#footer {
+	overflow: hidden;
+	width: 1000px;
+	height: 70px;
+	margin: 0 auto;
+	background: url(images/img07.jpg) no-repeat left top;
+}
+
+#footer p {
+	margin: 0;
+	padding-top: 20px;
+	line-height: normal;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	text-align: center;
+	color: #9C9781;
+}
+
+#footer a {
+	color: #9C9781;
+}
+
+/* Footer Content */
+
+#footer-bg {
+	width: 1000px;
+	margin: 0px auto;
+	background: url(images/img06.jpg) repeat-y left top;
+}
+
+#footer-content {
+	overflow: hidden;
+	padding: 30px 60px 30px 60px;
+	background: url(images/img05.jpg) no-repeat left top;
+}
+
+#col1 {
+	float: left;
+	width: 270px;
+	margin-right: 35px;
+}
+
+#col2 {
+	float: left;
+	width: 270px;
+	margin-right: 35px;
+}
+
+#col3 {
+	float: right;
+	width: 270px;
+}
+
+ul.style1 {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+ul.style1 li {
+	padding: 10px 0px;
+	font-size: 14px;
+}
+
+ul.style1 a {
+	display: block;
+	margin: 0px;
+	padding: 0px 0px 0px 20px;
+	background: url(images/img08.jpg) no-repeat left 6px;
+	color: #716A57;
+}
+
+ul.style1 a:hover {
+	text-decoration: underline;
+}

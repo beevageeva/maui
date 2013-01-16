@@ -1,0 +1,76 @@
+{% extends layout %}
+
+{% block title %}Estadisticas{% endblock %}
+
+{% block content %}
+
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<th>User</th>
+		<th>Jobs</th>
+		<th>Procs</th>
+		<th>ProcHours</th>
+		<th>%</th>
+		<th>PHRec</th>
+		<th>%</th>
+		<th>PHDed</th>
+		<th>%</th>
+		<th>FSTgt</th>
+		<th>AvgXF</th>
+		<th>MaxXF</th>
+		<th>AvgQF</th>
+		<th>effic</th>
+		<th>wCAcc</th>
+
+
+	</tr>
+ 
+  <tbody> 
+{% for res in list %}
+    <tr> 
+      <td>{{res.user}}</td> 
+      <td>{{res.jobs}} </td> 
+      <td>{{res.procs}} </td> 
+      <td>{{res.procHours}} </td> 
+      <td>{{res.jobsprc}} </td> 
+      <td>{{res.phReq}} </td> 
+      <td>{{res.phReqPrc}} </td> 
+      <td>{{res.phDed}} </td> 
+      <td>{{res.phDedPrc}} </td> 
+      <td>{{res.fsTgt}} </td> 
+      <td>{{res.avgXF}} </td> 
+      <td>{{res.maxXF}} </td> 
+      <td>{{res.avgQH}} </td> 
+      <td>{{res.effic}} </td> 
+      <td>{{res.wCAcc}} </td> 
+    </tr> 
+{% endfor %}
+</tbody>
+</table>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Username');
+        data.addColumn('number', 'Trabajos');
+        data.addRows({{listlen}});
+				var i = 0;
+				{% for s in list %}
+	        data.setValue(i, 0, '{{s.user}}');
+  	      data.setValue(i, 1, {{s.jobs}});
+					i++;
+				{% endfor %}
+        var chart = new google.visualization.PieChart(document.getElementById('num_job_div'));
+        chart.draw(data, {width: 450, height: 300, title: 'Numero de trabajos'});
+      }
+    </script>
+		 <div id="num_job_div"></div>
+
+
+
+
+{% endblock %}

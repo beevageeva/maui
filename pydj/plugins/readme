@@ -1,0 +1,13 @@
+1)in libssh2pydir(pylibssh2-1.0.0) run 
+python setup.py install 
+to compile and install
+
+2)afterwards in this dir(plugins) create sym links to dir libssh2pydir/build/libbuilddir/libssh2 and libssh2pydir/build/libbuilddir/_libssh2.so : 
+ln -s  pylibssh2-1.0.0/build/lib.linux-i686-2.7/libssh2
+ln -s  pylibssh2-1.0.0/build/lib.linux-i686-2.7/_libssh2.so
+
+3)decompress django and create sym link
+tar xzvf Django-1.3.tar.gz 
+ln -s Django-1.3/django
+
+4) ti test locally set python path variable

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Gastropoda  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110416
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{%url django.views.static.serve 'jquery-ui.css' %}" type="text/css"> 
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery.min.js' %}" > </script>
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery-ui.min.js' %}" > </script>
+<link rel="stylesheet" href="{%url django.views.static.serve 'gastropoda/style.css' %}" type="text/css"> 
+</head>
+<body>
+<div id="wrapper">
+<div id="logo">
+	<h1><a href="#">SAII </a></h1>
+</div>
+<div id="header">
+	<div id="menu">
+		<ul>
+				<li>
+					<a href="{%url map.views.listjobsTorque%}" >Jobs</a>
+				</li>
+				<li>
+					<a href="{%url map.views.listres%}" >Reservations</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listnodes%}" >Nodes</a>
+				</li>
+				<li>
+						<a href="{%url map.views.liststats%}" >Reports</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listMyjobs%}" >My jobs</a>
+				</li>
+				<li>
+						<a  href="http://www.saii.ull.es/recursos/computacion/acceso/maui">Documentation</a> 
+				</li>
+				<li>
+						<a  href="{%url map.views.logout%}">Logout</a> 
+				</li>
+		</ul>
+	</div>
+	<div id="gallery">
+        <img src="{%url django.views.static.serve 'gastropoda/images/img03.jpg' %}"  width="692" height="340" alt="">
+	</div>	
+</div>
+<div id="page">
+	<div id="page-bgtop">
+		<div id="content">
+			<div class="post">
+    {% block content %}{% endblock %}
+			</div>	
+		</div>
+		<div id="sidebar">
+			<ul>
+				<li>
+					<div id="search" >
+				{{username}}@{{host}}
+			{% for h in otherhosts %}      
+        
+        <a  href="{%url map.views.changeHost h %}" > {{h}}  </a> 
+        
+			{% endfor %}
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+
+				<li>
+					<div id="search" >
+					Change layout:
+			{% for l in otherlayouts %}      
+        
+        <a  href="{%url map.views.changeLayout l %}" > {{l}}  </a> 
+        
+			{% endfor %}
+					
+
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+</div>
+<!-- end #footer -->
+<div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>

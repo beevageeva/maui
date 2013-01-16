@@ -1,0 +1,78 @@
+{% extends layout %}
+
+{% block title %}Nodes List{% endblock %}
+
+{% block content %}
+
+
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<th>Id</th>
+
+
+{% if isSlurm %}
+		<th>Arch</th>
+		<th>Sockets</th>
+		<th>CoresPerSocket</th>
+		<th>CPUAlloc</th>
+		<th>CPUErr</th>
+		<th>CPUTot</th>
+		<th>OS</th>
+		<th>RealMemory</th>
+		<th>State</th>
+		<th>ThreadsPerCore</th>
+		<th>BootTime</th>
+
+{% else %}
+
+		<th>State</th>
+		<th>Procs</th>
+		<th>Memory</th>
+		<th>Classes</th>
+		<th>Load</th>
+
+{% endif %}
+	</tr>
+ 
+  <tbody> 
+{% for node in list %}
+    <tr> 
+      <td><a href="{% url map.views.viewnode node.id %}">{{node.id}}</a> </td> 
+{% if isSlurm %}
+      <td>{{node.Arch}} </td> 
+      <td>{{node.Sockets}} </td> 
+      <td>{{node.CoresPerSocket}} </td> 
+      <td>{{node.CPUAlloc}} </td> 
+      <td>{{node.CPUErr}} </td> 
+      <td>{{node.CPUTot}} </td> 
+      <td>{{node.OS}} </td> 
+      <td>{{node.RealMemory}} </td> 
+      <td>{{node.State}} </td> 
+      <td>{{node.ThreadsPerCore}} </td> 
+      <td>{{node.BootTime}} </td> 
+{% else %}
+      <td>{{node.state}} </td> 
+      <td>{{node.procs}} </td> 
+      <td>{{node.memory}} </td> 
+      <td>{{node.classes}} </td> 
+      <td>{{node.load}} </td> 
+{% endif %}
+      
+    </tr> 
+{% endfor %}
+</tbody>
+</table>
+
+<br/>
+
+{% if gangliaurl %}
+<div style:'float: left'>
+{% for node in list %}
+	<img  src="{{gangliaurl}}{{node.id}}">
+{% endfor %}
+</div>
+{% endif %}
+
+
+{% endblock %}

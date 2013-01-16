@@ -1,0 +1,59 @@
+
+#!/bin/bash
+
+# ##############################################################################
+# Nombre      : script.sh
+# Finalidad   : script para el envio de trabajos a las colas de tarja.saii.ull.es
+# Modo de uso : para enviar el trabajo a la cola hacer: 
+#                         > qsub script.sh
+# ##############################################################################
+
+
+# ##############################################################################
+# Modificar los parametros correspondientes tal y como sea necesario.
+# Aquellas opciones que no sean necesarias pueden comentarse incluyendo una
+# almohadilla extra al comienzo de la linea correspondiente.
+# ##############################################################################
+# Asigna un nombre al trabajo. Por defecto, es el nombre del script de trabajo PBS.
+#PBS -N pruebaporttal
+# Numero de nodos y de procesadores por nodo que se solicitan.
+#PBS -l nodes=2:ppn=2
+
+
+# Nombre de la cola a la que se desea enviar el trabajo. 
+# Las colas disponibles son: serial, parallel
+#PBS -q batch
+# Tiempo maximo total durante el cual el trabajo puede estar ejecutandose (horas:min:seg).
+
+
+
+# Ruta y nombre del fichero al que se redirige la salida estandar.
+#PBS -o outpruebaportal           
+# Ruta y nombre del fichero al que se redirige la salida estandar de errores.
+#PBS -e errpruebaportal
+# Une la salida estandar y la de errores en un unico fichero (en el .out).
+#PBS -j oe                      
+# Copia la lista de ficheros en el nodo de ejecucion antes de que el trabajo empiece.
+##PBS -W stagein=file_list      
+# Copia la lista de ficheros del nodo de ejecucion despues de que el trabajo acabe. 
+##PBS -W stageout=file_list     
+# Indica que un trabajo no debe volver a ejecutarse si falla.
+#PBS -r n                       
+# Exporta todas las variables de entorno para el trabajo.
+#PBS -V                         
+
+
+
+
+# ##############################################################################
+
+
+# Posicionamiento en el directorio desde el que se ha realizado el qsub del script
+cd $PBS_O_WORKDIR
+
+# Obtener un fichero con la informacion de los nodos y procesadores que se nos 
+# ha asignado para la ejecucion de nuestro trabajo
+cat $PBS_NODEFILE > nodesinfo.txt
+
+# Codigo correspondiente a la ejecucion de nuestro programa en particular
+ls

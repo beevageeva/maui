@@ -1,0 +1,166 @@
+                                                                                                                                                             
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+  <head> 
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"> 
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{%url django.views.static.serve 'moab/default.css' %}" type="text/css"> 
+    <link rel="stylesheet" href="{%url django.views.static.serve 'jquery-ui.css' %}" type="text/css"> 
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery.min.js' %}" > </script>
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery-ui.min.js' %}" > </script>
+  </head> 
+  <body> 
+ 
+    
+    
+ 
+ 
+ 
+<table class="header" border="0" cellpadding="1" cellspacing="0" width="100%"> 
+  <tbody> 
+    <tr> 
+      <td align="left" valign="top" width="33%"> 
+      
+      &nbsp;&nbsp;
+      </td> 
+      <td class="logout" colspan="2" align="right" valign="center" width="33%">        
+        <div align="center"> 
+        
+        <big>Maui Access Portal<SMALL></big> 
+        </div> 
+      </td> 
+      <td width="33%" valign="top" align="right" class="navbar"> 
+        
+				{{username}}@{{host}}
+         
+      </td> 
+    </tr> 
+ 
+   <tr> 
+      <td> 
+      </td>
+ 
+ 
+
+ <td>&nbsp;</td>
+ <td class="logout" colspan="3" align="right" valign="center"> 
+  <table border="0"> 
+    <tr> 
+			{% for h in otherhosts %}      
+      <td class="logout" align="center"> 
+        
+        <a class="logout" href="{%url map.views.changeHost h %}" > {{h}}  </a> 
+        
+      </td> 
+			{% endfor %}
+ 
+    </tr> 
+  </table> 
+</td> 
+</tr> 
+
+
+   <tr> 
+      <td> 
+      </td>
+ 
+ 
+
+ <td></td>
+ <td class="logout" colspan="3" align="right" valign="center"> 
+  <table border="0"> 
+    <tr> 
+      <td class="logout" align="center"> 
+       	Change layout: 
+        
+      </td> 
+			{% for h in otherlayouts %}      
+      <td class="logout" align="center"> 
+        
+        <a class="logout" href="{%url map.views.changeLayout h %}" > {{h}}  </a> 
+        
+      </td> 
+			{% endfor %}
+ 
+    </tr> 
+  </table> 
+</td> 
+</tr> 
+
+  </tbody> 
+</table> 
+ 
+ 
+ 
+                                                                                                                                                            
+                                                                                                                                                            
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+ 
+  <tr> 
+    <td class="header" align="center" valign="top"><br> 
+      <table class="header" border="1"> 
+        <tr> 
+          <td> 
+            <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+              <tbody> 
+               
+                <tr> 
+                  <td><img src="{%url django.views.static.serve 'moab/images/jobs.gif' %}"></td> 
+                  <td>
+										<a href="{%url map.views.listjobsTorque%}" class="sidenav">Jobs</a>
+									</td> 
+                </tr> 
+                
+                <tr> 
+                  <td><img src="{%url django.views.static.serve 'moab/images/reservations.gif' %}"></td> 
+                  <td>
+										<a href="{%url map.views.listres%}" class="sidenav">Reservations</a>
+									</td> 
+                </tr> 
+                
+                <tr> 
+                  <td><img src="{%url django.views.static.serve 'moab/images/nodes.gif' %}"></td> 
+                  <td>
+										<a href="{%url map.views.listnodes%}" class="sidenav">Nodes</a>
+									</td> 
+                </tr> 
+                
+                
+                <tr> 
+                  <td><img src="{%url django.views.static.serve 'moab/images/reports.gif' %}"></td> 
+                  <td>
+										<a href="{%url map.views.liststats%}" class="sidenav">Reports</a>
+									</td> 
+                </tr> 
+                <tr> 
+                  <td><img src="{%url django.views.static.serve 'images/jobs.gif' %}"></td> 
+                  <td>
+										<a href="{%url map.views.listMyjobs%}" class="sidenav">My jobs</a>
+									</td> 
+                </tr> 
+                <tr> 
+        					<td>	<a href="{%url map.views.logout%}" ><img src="{%url django.views.static.serve 'moab/images/s_exit.gif' %}" border="0"></a> </td>
+        					<td>
+											<a class="sidenav" href="{%url map.views.logout%}">Logout</a> 
+									</td>
+                </tr> 
+                
+                
+              </tbody> 
+            </table> 
+         </td> 
+        </tr> 
+      </table> 
+    </td> 
+    <td width="85%" colspan="2" class="main"> 
+ 
+ 
+  <br> 
+ 
+    {% block content %}{% endblock %}
+ 
+ 
+                                                                                                                                                             
+  </body> 
+</html> 
+ 

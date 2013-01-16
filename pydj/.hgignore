@@ -1,0 +1,15 @@
+syntax: regexp
+^maui/settings_local\.py$
+^mauisqlite3.db$
+^maui/setenv$
+^debug.log$
+^maui/map/temp/.*$
+^.*\.pyc$
+^.*\.swp$
+^plugins/pylibssh2-1.0.0/build/.*$
+^plugins/libssh2$
+^plugins/_libssh2.so$
+^plugins/django$
+^plugins/Django-1.3/.*$
+^plugins/Django-1.3$
+

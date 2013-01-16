@@ -1,0 +1,61 @@
+{% extends layout %}
+
+{% block title %}JobList{% endblock %}
+
+{% block content %}
+
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<td>JobName</td>
+      <td>{{job.jobName}}</td> 
+    </tr> 
+    <tr> 
+		<td>Num nodes</td>
+      <td>{{job.numNodes}} </td> 
+    </tr> 
+    <tr> 
+		<td>Cpus/Node</td>
+      <td>{{job.procsNode}} </td> 
+    </tr> 
+    <tr> 
+		<td>Memoria</td>
+     <td>&nbsp;{{job.mem}} &nbsp;</td> 
+    </tr> 
+    <tr> 
+		<td>WallTime</td>
+      <td>&nbsp;{{job.walltime}}&nbsp; </td> 
+    </tr> 
+    <tr> 
+		<td>Fichero Salida</td>
+      <td>{{job.outfile}} </td> 
+      <td><a href="{% url map.views.downloadout job.id%}">Get remote file</a> </td> 
+    </tr> 
+    <tr> 
+		<td>Fichero Error</td>
+      <td>{{job.errorfile}} </td> 
+      <td><a href="{% url map.views.downloaderror job.id%}">Get remote file</a> </td> 
+    </tr> 
+    <tr> 
+		<td>Reserva</td>
+      <td>&nbsp;{{job.resid}} &nbsp;</td> 
+    </tr> 
+    <tr> 
+		<td>Nombre del script</td>
+      <td>{{job.scriptFilename}} </td> 
+      <td><a href="{% url map.views.downloadscript job.id%}">Get remote file</a> </td> 
+    </tr> 
+    <tr> 
+		<td>JobId</td>
+      <td>&nbsp;{{job.jobid}} &nbsp;</td> 
+    </tr> 
+    <tr> 
+		<td>Code</td>
+      <td>{{job.execcode}} </td> 
+
+	</tr>
+ 
+</table>
+<a href="{% url map.views.deleteMyjob job.id %}">Borrar </a>
+{% endblock %}

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{%url django.views.static.serve 'moab/default.css' %}" type="text/css"> 
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<table class="header" border="0" cellpadding="1" cellspacing="0" width="100%"> 
+  <tbody> 
+    <tr>
+    <td align="left" valign="top" width="33%"> 
+      Login
+      </td> 
+ 
+      <td class="logout" colspan="2" align="right" valign="center" width="33%"> 
+        <div align="center"> 
+        
+        <big>Maui Access Portal</big> 
+        </div> 
+      </td> 
+      <td width="33%" valign="top" align="right" class="navbar"> 
+      </td> 
+    </tr> 
+    <tr> 
+      <td> 
+      <table widht="100%" border="0"> 
+        <tr> 
+        </tr> 
+      </table> 
+      </td> 
+      
+    </tr> 
+  </tbody> 
+</table> 
+
+
+    {% block content %}{% endblock %}
+
+
+
+</body>
+</html>

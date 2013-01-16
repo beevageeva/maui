@@ -1,0 +1,29 @@
+{% extends layout %}
+
+{% block title %}JobList{% endblock %}
+
+{% block content %}
+
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<th>JobName</th>
+		<th>Num nodes</th>
+		<th>Cpus/Node</th>
+		<th>Nombre del script</th>
+
+	</tr>
+ 
+  <tbody> 
+{% for job in list %}
+    <tr> 
+      <td><a href="{% url map.views.viewMyjob job.id%}">{{job.jobName}}</a>  </td> 
+      <td>{{job.numNodes}} </td> 
+      <td>{{job.procsNode}} </td> 
+      <td>{{job.scriptFilename}} </td> 
+      
+    </tr> 
+{% endfor %}
+</table>
+{% endblock %}

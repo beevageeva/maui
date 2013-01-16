@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="{%url django.views.static.serve 'seablue/style.css' %}" type="text/css"> 
+    <link rel="stylesheet" href="{%url django.views.static.serve 'jquery-ui.css' %}" type="text/css"> 
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery.min.js' %}" > </script>
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery-ui.min.js' %}" > </script>
+</head>
+<body> 
+<center>
+
+  <div id="container"> 
+    <table width="760" border="0" cellpadding="0" cellspacing="0" id="header"> 
+      <tr> 
+        <td><img src="{%url django.views.static.serve 'seablue/images/logo.gif' %}"  width="237"></td> 
+
+      </tr> 
+    </table> 
+
+
+
+
+    <table id="main" width="760" border="0" cellpadding="0" cellspacing="0"> 
+      <tr> 
+        <td valign="top" id="leftside"><div class="box1"> 
+            <div id="navcontainer"> 
+              <ul id="navlist"> 
+				<li>
+					<a href="{%url map.views.listjobsTorque%}" >Jobs</a>
+				</li>
+				<li>
+					<a href="{%url map.views.listres%}" >Reservations</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listnodes%}" >Nodes</a>
+				</li>
+				<li>
+						<a href="{%url map.views.liststats%}" >Reports</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listMyjobs%}" >My jobs</a>
+				</li>
+				<li>
+						<a  href="http://www.saii.ull.es/recursos/computacion/acceso/maui">Documentation</a> 
+				</li>
+				<li>
+						<a  href="{%url map.views.logout%}">Logout</a> 
+				</li>
+              </ul> 
+            </div> 
+          </div> 
+
+
+		  <div class="line"> 
+				&nbsp;
+          </div> </td> 
+
+        <td id="midcontent">
+
+    {% block content %}{% endblock %}
+
+
+				</td>
+ 
+       
+      </tr> 
+    </table> 
+
+    <table width="760" border="0" cellpadding="0" cellspacing="0"> 
+      <tr> 
+			<td>
+          <div class="box4 , small">
+            <p class="title">{{username}}@{{host}}</p>
+							<table><tr> 
+			{% for h in otherhosts %}      
+        
+       <td> <a  href="{%url map.views.changeHost h %}" > {{h}}  </a> </td>
+        
+			{% endfor %}
+							</tr></table> 
+          </div>
+			</td><td>
+          <div class="box4 , small"> 
+            <p class="title">Change layout :</p>
+							<table><tr> 
+			{% for l in otherlayouts %}      
+        
+        <td><a  href="{%url map.views.changeLayout l %}" > {{l}}  </a> </td>
+        
+			{% endfor %}
+							</tr></table> 
+          </div>
+			</td>
+      </tr> 
+    </table> 
+
+  </div> 
+</center> 
+</body>
+</html>

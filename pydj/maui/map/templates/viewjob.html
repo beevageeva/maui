@@ -1,0 +1,22 @@
+{% extends layout %}
+
+{% block title %}Job {{jobid}}{% endblock %}
+
+{% block content %}
+<h2>Planificador </h2>
+
+{% for line in outlines %}
+	{{ line }}
+	<br/>
+{% endfor %}
+
+{% if outlinesTorque %}
+<h2>Torque </h2>
+	<br/>
+{% for line in outlinesTorque %}
+	{{ line }}
+	<br/>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,262 @@
+{% extends layout %}
+
+{% block title %}JobList{% endblock %}
+
+{% block content %}
+
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>State</th>
+		<th>User</th>
+		<th>TimeUse</th>
+		<th>Queue</th>
+	
+{% if isSlurm %}
+		<th>Nodes</th>
+		<th>NodeList</th>
+{% endif %}
+		<th>Delete</th>
+
+	</tr>
+ 
+  <tbody> 
+{% for job in list %}
+    <tr> 
+      <td>
+ 				<a href="{% url map.views.viewjob job.id %}">{{job.id}}</a>
+ 			</td> 
+      <td>{{job.name}} </td> 
+      <td>{{job.state}} </td> 
+      <td>{{job.user}} </td> 
+      <td>{{job.timeUse}} </td> 
+      <td>{{job.queue}} </td> 
+{% if isSlurm %}
+      <td>{{job.nodes}} </td> 
+      <td>{{job.nodeList}} </td> 
+
+{% endif %}
+     <td>
+		&nbsp;
+		{% if job.user == username %}
+			<a href="{% url map.views.deletejobTorque job.id %}">delete</a> 
+		{% endif %}
+		&nbsp;
+			</td> 
+ 
+    </tr> 
+{% endfor %}
+</table>
+<a href="{% url map.views.submitjob %}">Submit Job </a>
+
+<br/>
+
+
+
+
+
+
+    <style type="text/css">
+      /*demo page css*/
+      #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+      #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+      ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+      ul#icons span.ui-icon {float: left; margin: 0 4px;}
+
+
+
+    </style>  
+
+
+
+
+<script type="text/javascript">
+
+function selectFile(filevalue, origdirname){
+	document.getElementById('submitscriptid').value= origdirname + "/" +filevalue;
+	document.getElementById('scriptnamedivid').innerHTML= filevalue;
+	//highlight
+	//$( "#dirstbody tr td div" ).css("background", "#ffffff");
+
+
+
+
+var divs = document.getElementById('dirstbody').getElementsByTagName('div');
+
+for (i=0;i<divs.length;i++)
+
+{
+
+	divs[i].style.backgroundColor = '#ffffff';
+
+}
+	
+	thisdiv = document.getElementById("FILE" + filevalue +  "ID");
+	thisdiv.style.backgroundColor = '#ff0000';
+
+	return false;
+}
+
+
+
+//$(document).ajaxSend(function(event, xhr, settings) {
+//    function getCookie(name) {
+//        var cookieValue = null;
+//        if (document.cookie && document.cookie != '') {
+//            var cookies = document.cookie.split(';');
+//            for (var i = 0; i < cookies.length; i++) {
+//                var cookie = jQuery.trim(cookies[i]);
+//                // Does this cookie string begin with the name we want?
+//                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+//                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                    break;
+//                }
+//            }
+//        }
+//        return cookieValue;
+//    }
+//    function sameOrigin(url) {
+//        // url could be relative or scheme relative or absolute
+//        var host = document.location.host; // host + port
+//        var protocol = document.location.protocol;
+//        var sr_origin = '//' + host;
+//        var origin = protocol + sr_origin;
+//        // Allow absolute or scheme relative URLs to same origin
+//        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+//            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+//            // or any other URL that isn't scheme relative or absolute i.e relative.
+//            !(/^(\/\/|http:|https:).*/.test(url));
+//    }
+//    function safeMethod(method) {
+//        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+//    }
+//
+//    if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+//        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+//    }
+//});
+//
+//
+
+
+//$.postJSON = function (url, data, callback) {
+//    $.ajax({
+//        'url': url,
+//        'type': 'post',
+//        'processData': false,
+//        'data': JSON.stringify(data),
+//        contentType: 'application/json',
+//        success: callback,
+//    });
+//};
+
+
+function listdir(origdirname){
+	//TODO postJSON? must send CSRF not working 500 response code  
+	dirname = origdirname.replace(/\./g, "__POINT__").replace(/\//g , "__SLASH__").replace(/ /g,"__SPACE__");
+	//alert(origdirname)
+	//alert(dirname)
+	 //$( "#dir tbody tr" ).remove();
+		document.getElementById("dirstbody").innerHTML = "";
+ 	$.getJSON("{% url map.views.listdirsAjax 'DIRNAME' %}".replace("DIRNAME",  dirname)  , function(json){
+ 	//$.postJSON("listdirsAjax" , {'dirname':dirname}  , function(json){
+		$.each(json, function(index,value) {
+		if(index%3==0){
+			 $( "#dirs tbody" ).append( "<tr>" );
+
+		} 
+   $( "#dirs tbody" ).append( "<td onclick=alert('jjjj');toggleCells(this, 'white', 'red'); >" );
+			if(value[1]){
+				$( "#dirs tbody" ).append("<a href='#'  onclick='listdir(\"" + origdirname +"/" + value[0] +  "\");return false'  >" +  value[0] + "</a>");
+			}
+			else{
+				$( "#dirs tbody" ).append("<div style='background:#ffffff;'  id='FILE" + value[0] +  "ID' onclick='selectFile(\"" + value[0] + "\",\""   + origdirname +   "\");'>" + value[0] + "</div>");
+			}
+							
+     $( "#dirs tbody" ).append( "</td>" );
+		if(index%3==0){
+			 $( "#dirs tbody" ).append( "</tr>" );
+
+		} 
+});
+
+  });
+}
+
+
+
+ $(function(){
+
+        // Dialog     
+        $('#dialog').dialog({
+          autoOpen: false,
+          width: 600,
+          buttons: {
+            "Ok": function(){ 
+			 				if(document.getElementById('submitscriptid').value !=""){
+								document.forms["submitscriptform"].submit();
+							}
+              $(this).dialog("close"); 
+            }, 
+            "Cancel": function() { 
+              $(this).dialog("close"); 
+            } 
+          }
+        });
+        
+        // Dialog Link
+        $('#dialog_link').click(function(){
+          $('#dialog').dialog('open');
+					listdir(".")
+          return false;
+        });
+
+       
+        //hover states on the static widgets
+        $('#dialog_link, ul#icons li').hover(
+          function() { $(this).addClass('ui-state-hover'); }, 
+          function() { $(this).removeClass('ui-state-hover'); }
+        )
+
+});
+
+
+
+</script>
+    <style type="text/css">
+      /*demo page css*/
+      #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+      #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+      ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+      ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			td.hilite  {	background: #f00;color: #fff;
+		}  
+    </style>  
+
+
+    <!-- ui-dialog --> 
+    <div id="dialog" title="Select script">
+			
+			Selected file: <div id="scriptnamedivid"></div>
+		  <table id="dirs" class="ui-widget ui-widget-content">
+				<tbody id = "dirstbody">
+
+				</tbody>
+				</table>	
+
+    </div> 
+      
+<br/>
+<form id="submitscriptform" action="{%url map.views.submitscript%}" method="post">
+{% csrf_token %}
+<input type="hidden" name="scriptname" id="submitscriptid"  />
+</form>
+<a href="#" id="dialog_link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>Submit remote script</a>
+
+
+
+
+{% endblock %}

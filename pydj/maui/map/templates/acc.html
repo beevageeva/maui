@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Accomplishable
+Description: A two-column, fixed-width design.
+Version    : 1.0
+Released   : 20090731
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}{% endblock %}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+    <link rel="stylesheet" href="{%url django.views.static.serve 'jquery-ui.css' %}" type="text/css"> 
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery.min.js' %}" > </script>
+    <script type="text/javascript" src="{%url django.views.static.serve 'jquery-ui.min.js' %}" > </script>
+<link rel="stylesheet" href="{%url django.views.static.serve 'acc/style.css' %}" type="text/css"> 
+</head>
+<body>
+
+<!-- start header -->
+<div id="header">
+	<h1>SAII</h1>
+	<p>
+						{{username}}@{{host}}
+			{% for h in otherhosts %}      
+        
+        <a  href="{%url map.views.changeHost h %}" > {{h}}  </a> 
+        
+			{% endfor %}
+</p>
+</div>
+<!-- end header -->
+<!-- start page -->
+
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<!-- start content -->
+				<div id="content">
+					<div class="post">
+    {% block content %}{% endblock %}
+
+					</div>
+				</div>
+				<!-- end content -->
+				<!-- start sidebar -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>Maui</h2>
+							<ul>
+				<li>
+					<a href="{%url map.views.listjobsTorque%}" >Jobs</a>
+				</li>
+				<li>
+					<a href="{%url map.views.listres%}" >Reservations</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listnodes%}" >Nodes</a>
+				</li>
+				<li>
+						<a href="{%url map.views.liststats%}" >Reports</a>
+				</li>
+				<li>
+						<a href="{%url map.views.listMyjobs%}" >My jobs</a>
+				</li>
+				<li>
+						<a  href="http://www.saii.ull.es/recursos/computacion/acceso/maui">Documentation</a> 
+				</li>
+				<li>
+						<a  href="{%url map.views.logout%}">Logout</a> 
+				</li>
+							</ul>
+						</li>
+						<li>
+	<p>
+	Change layout:
+			{% for l in otherlayouts %}      
+        
+        <a  href="{%url map.views.changeLayout l %}" > {{l}}  </a> 
+        
+			{% endfor %}
+</p>
+
+						</li>
+					</ul>
+				</div>
+				<!-- end sidebar -->
+				<div style="clear:both">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+<div id="footer">
+	<p>&copy;2007 All Rights Reserved &nbsp;&bull;&nbsp; Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> &nbsp;&bull;&nbsp; Icons by <a href="http://www.famfamfam.com/">FAMFAMFAM</a>.</p>
+</div>
+</body>
+</html>

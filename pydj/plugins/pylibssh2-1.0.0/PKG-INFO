@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: pylibssh2
+Version: 1.0.0
+Summary: Python binding for libssh2 library
+Home-page: http://github.com/wallix/pylibssh2
+Author: Sofian Brabez
+Author-email: sbz@wallix.com
+License: LGPL
+Download-URL: http://github.com/wallix/pylibssh2/download/pylibssh2-1.0.0.tar.gz
+Description: Python binding for libssh2 library
+Platform: Linux
+Platform: BSD
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Python
+Classifier: Topic :: Security
+Classifier: Topic :: Software Development :: Libraries

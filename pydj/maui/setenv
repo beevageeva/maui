@@ -1,0 +1,3 @@
+PYDJ="/srv/www/vhosts/maui/pydj/"
+export PYTHONPATH=$PYDJ/plugins:$PYDJ:$PYDJ/maui:$PYTHONPATH
+

@@ -1,0 +1,13 @@
+{% extends layout %}
+
+{% block title %}Node {{nodeid}}{% endblock %}
+
+{% block content %}
+
+{% for line in outlines %}
+	{{ line }}
+	<br/>
+{% endfor %}
+
+
+{% endblock %}

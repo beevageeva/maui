@@ -1,0 +1,37 @@
+{% extends layout %}
+
+{% block title %}Nodes List{% endblock %}
+
+{% block content %}
+
+
+
+<table border="1" cellpadding="2" cellspacing="2">
+	<tr>
+		<th>Id</th>
+		<th>Type</th>
+		<th>NodeId</th>
+		<th>JobState</th>
+		<th>Start</th>
+		<th>Duration</th>
+		<th>StartTime</th>
+
+	</tr>
+ 
+  <tbody> 
+{% for res in list %}
+    <tr> 
+      <td>{{res.resid}}</td> 
+      <td>{{res.type}} </td> 
+      <td>{{res.nodeid}} </td> 
+      <td>{{res.jobState}} </td> 
+      <td>{{res.start}} </td> 
+      <td>{{res.duration}} </td> 
+      <td>{{res.startTime}} </td> 
+      
+    </tr> 
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

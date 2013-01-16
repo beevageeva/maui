@@ -1,0 +1,198 @@
+{% extends layout %}
+
+{% block title %}Submit Job{% endblock %}
+
+{% block content %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{%url map.views.submitjob%}" method="post">
+{% csrf_token %}
+<div align="center"> 
+<p></p> 
+<br/> 
+<table border="0" cellpadding="2" cellspacing="2"> 
+  <tbody> 
+		{% if form.scriptFilename.errors %}
+    <tr> 
+      <td colspan="3" > {{form.scriptFilename.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >script filename: <br/> 
+      </td> 
+      
+        <td >{{form.scriptFilename}}
+      
+      </td> <td>Nombre del fichero del script que se guarda en el home de la máquina </td>
+
+    </tr> 
+		{% if form.jobName.errors %}
+    <tr> 
+      <td colspan="3" > {{form.jobName.errors}}  
+      </td> 
+
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Job name:<br/> 
+      </td> 
+      
+        <td >{{form.jobName}}
+      
+      </td> <td> Nombre del trabajo  </td>
+
+    </tr> 
+		{% if form.numNodes.errors %}
+    <tr> 
+      <td colspan="3" > {{form.numNodes.errors}}  
+      </td> 
+
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >NumNodes:<br/> 
+      </td> 
+      
+        <td >{{form.numNodes}}
+      
+      </td><td>  Número de nodos que necesita para la ejecución  </td> 
+    </tr> 
+		{% if form.procsNode.errors %}
+    <tr> 
+      <td colspan="3" > {{form.procsNode.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Procs per node:<br/> 
+      </td> 
+      
+        <td >{{form.procsNode}}
+      
+      </td> <td> Número de procesadores en cada nodo </td> 
+
+    </tr> 
+
+		{% if form.queue.errors %}
+    <tr> 
+      <td colspan="3" > {{form.queue.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Cola:<br/> 
+      </td> 
+      
+        <td >{{form.queue}}
+      
+      </td> <td> Cola a cual manda el trabajo: en tajinaste existen las colas batch y fast , en drago las particiones batch,fast,test y special</td> 
+
+    </tr> 
+
+
+		{% if form.mem.errors %}
+    <tr> 
+      <td colspan="3" > {{form.mem.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Memoria(opcional): 
+      </td> 
+        <td >{{form.mem}}
+      </td><td>En tajinaste default 1gb</td>
+      
+    </tr> 
+		{% if form.walltime.errors %}
+    <tr> 
+      <td colspan="3" > {{form.walltime.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Walltime(opcional): 
+      </td> 
+        <td >{{form.walltime}}
+      </td><td>En tajinaste cola batch 06:00:00 por defecto, cola fast 01:00:00 por defecto, max 03:00:00 , en drago hay solo una cola(partición) y no hay límite de tiempo</td>
+      
+    </tr> 
+		{% if form.outfile.errors %}
+    <tr> 
+      <td colspan="3" > {{form.outfile.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Outfile:<br/> 
+      </td> 
+      
+        <td >{{form.outfile}}
+      
+      </td> <td> Nombre del fichero de salida </td> 
+
+    </tr> 
+		{% if form.errorfile.errors %}
+    <tr> 
+      <td colspan="3" > {{form.errorfile.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Errorfile:<br/> 
+      </td> 
+      
+        <td >{{form.errorfile}}
+      
+      </td> <td> Nombre del fichero de error </td> 
+
+    </tr> 
+		{% if form.resid.errors %}
+    <tr> 
+      <td colspan="3" > {{form.resid.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Id Reserva(opcional):<br/> 
+      </td> 
+      
+        <td >{{form.resid}}
+      
+      </td> <td> Id de la reserva </td> 
+
+    </tr> 
+		{% if form.execcode.errors %}
+    <tr> 
+      <td colspan="3" > {{form.execcode.errors}}  
+      </td> 
+    </tr> 
+		{% endif %}
+    <tr> 
+      <td >Codigo a ejecutar:<br/> 
+      </td> 
+      
+        <td >{{form.execcode}}
+      
+      </td> <td> Código que quiere ejecutar </td> 
+
+    </tr> 
+    
+    <tr> 
+      <td ><br/> 
+      </td> 
+      <td valign="top"> 
+        <br/><input value="Submit" name="cmdSubmit" type="submit">&nbsp;<input value="Clear" name="cmdClear" type="reset"><br/> 
+      </td> 
+    </tr> 
+  </tbody> 
+</table> 
+
+
+</div> 
+</form>
+
+
+{% endblock %}
